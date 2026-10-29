@@ -1,0 +1,67 @@
+# Catalogo de regras Fimathe – v0.2
+# Status: confirmado | provisoria | ambigua | decisao-projeto | pendente-imagem
+
+meta:
+  versao: "0.2"
+  data: "2026-10-29"
+
+regras_doc_a:
+  - id: R01
+    texto: "Usar dois tempos graficos definidos pelo estilo (Scalper M15/M1, Day H1/M15, Position H4/H1, Swing D1/H4)"
+    fonte: "DocA:P1"
+    status: confirmado
+  - id: R02
+    texto: "Fimathe e tecnica seguidora de tendencia (alta/baixa/lateralizado)"
+    fonte: "DocA:P1"
+    status: confirmado
+  - id: R06
+    texto: "Regioes de negociacao: suporte e resistencia = ponto-A e ponto-B"
+    fonte: "DocA:P2"
+    status: confirmado
+  - id: R08
+    texto: "Maxima da exaustao entre A e B; medir e projetar no sentido da tendencia"
+    fonte: "DocA:P2"
+    status: confirmado
+  - id: R10
+    texto: "Ao perder o canal, busca expansao da maxima anterior; corrige em 50% ou 100%"
+    fonte: "DocA:P2"
+    status: confirmado
+  - id: R11
+    texto: "Regioes de 50% e 100% sao prioritarias para correcoes"
+    fonte: "DocA:P3"
+    status: confirmado
+  - id: R15
+    texto: "Entrada no TF maior; stop no TF menor (surfar a cada 50%)"
+    fonte: "DocA:P4-P5"
+    status: confirmado
+  - id: R17
+    texto: "Em alta so compras; vendas apos cair 2 niveis (triangulo 100% Fibonacci)"
+    fonte: "DocA:P8"
+    status: confirmado
+  - id: R19
+    texto: "Exaustao ~85% da expansao; TP entre 80% e 100%"
+    fonte: "DocA:P10"
+    status: confirmado
+  - id: R21
+    texto: "Risco max 3% por operacao; foco no stop"
+    fonte: "DocA:P10"
+    status: confirmado
+
+regras_doc_b:
+  - id: B01
+    texto: "CA = max/min absolutas das 4 primeiras velas M15 apos abertura de domingo (Brasilia)"
+    fonte: "DocB:S3.2"
+    status: provisoria
+  - id: B03
+    texto: "Rompimento so vale com fechamento de vela fora do canal; sombra nao conta"
+    fonte: "DocB:S3.3"
+    status: provisoria
+  - id: B_neutral
+    texto: "Zona neutra adjacente com mesma amplitude; stop alem do limite externo"
+    fonte: "Transcricao 1-2"
+    status: confirmado
+  - id: B05
+    texto: "C2, C3, C4 como somas dos ciclos anteriores"
+    fonte: "DocB:S3.4-3.5"
+    status: provisoria
+    observacao: "Formula nao fecha de forma inequivoca"

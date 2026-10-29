@@ -1,0 +1,53 @@
+# Definição das variantes – v0.1
+
+variantes:
+  aula_h1_m15:
+    nome: "Aula H1/M15 (pontos A/B)"
+    fonte_principal: "DocA"
+    timeframes:
+      scalper: ["M15", "M1"]
+      day_trader: ["H1", "M15"]
+      position: ["H4", "H1"]
+      swing: ["D1", "H4"]
+    ancora: "consolidacao → pontos A e B"
+    alvo: "80–100% da expansão"
+    virada_de_mao: "venda só após perder 2 níveis (triângulo)"
+    status: "regras catalogadas (R*)"
+    implementacao_v1: false
+
+  raiz:
+    nome: "Raiz"
+    fonte_principal: "DocB:§2"
+    timeframes: ["H1 análise", "M15 execução"]
+    ancora: "Canal de Referência + Zona Neutra"
+    alvo: "1–2 níveis"
+    virada_de_mao: true
+    status: "provisoria (Doc B ausente)"
+    implementacao_v1: false
+
+  teoria_dos_ciclos:
+    nome: "Teoria dos Ciclos"
+    fonte_principal: "DocB:§3-5"
+    timeframes: ["Semanal contexto", "M15"]
+    ancora: "Canal de Abertura (4 velas M15 de domingo)"
+    alvo: "T1 ou T2"
+    virada_de_mao: true
+    status: "provisoria (Doc B ausente + fórmula ambígua)"
+    implementacao_v1: false
+
+  pcm:
+    nome: "PCM (Princípio da Continuidade do Movimento)"
+    fonte_principal: "DocB:§6"
+    timeframes: ["M5", "M1"]
+    ancora: "CA de 4 velas, recomeçando sempre"
+    alvo: "T1"
+    virada_de_mao: false
+    status: "provisoria (Doc B ausente)"
+    implementacao_v1: false
+
+escopo_v1:
+  variantes_ativas: []
+  linguagem: null
+  fuso_ca: null
+  modelo_ciclos: "plugavel"
+  incluir_spread: false

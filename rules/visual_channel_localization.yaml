@@ -1,0 +1,73 @@
+# Regras visuais derivadas das capturas legíveis do PDF enviado.
+# Esta camada orienta a IA de visão; não substitui a matemática em engine/.
+meta:
+  version: "0.1"
+  source: "Técnica Fimathe: Estratégias de Trading, capturas internas 2/7 e 3/7 do PDF fornecido"
+  source_quality: "capturas de tela com resolução limitada"
+  purpose: "orientar localização visual do Canal de Referência"
+  status: "interpretacao-documentada; validar contra gráficos de referência"
+
+rules:
+  - id: VCL01
+    name: identify_trend_first
+    instruction: "Identificar a tendência antes de propor o Canal de Referência."
+    status: "source-derived"
+  - id: VCL02
+    name: no_fixed_point_count
+    instruction: "Não impor número fixo de toques/pontos para definir o canal; o documento diz que não há número específico."
+    status: "source-derived"
+  - id: VCL03
+    name: choose_midterm_region
+    instruction: "Propor canal na região intermediária adequada ao movimento visível e explicar a escolha."
+    status: "source-derived"
+  - id: VCL04
+    name: anchor_points_a_b
+    instruction: "Descrever as regiões A e B como referências de negociação, suporte/resistência, citando as evidências visuais."
+    status: "source-derived"
+  - id: VCL05
+    name: body_or_wick
+    instruction: "A marcação pode usar corpo ou sombra; registrar qual foi usada e por quê."
+    status: "source-derived"
+  - id: VCL06
+    name: avoid_too_narrow_or_wide
+    instruction: "Classificar qualitativamente a largura como adequada, estreita, larga ou incerta; não inventar limiares numéricos."
+    status: "source-derived"
+  - id: VCL07
+    name: draw_reference_and_neutral
+    instruction: "Manter Canal de Referência e Zona Neutra como elementos separados; usar engine.channels.geometry para cálculos."
+    status: "source-derived-plus-existing-engine"
+  - id: VCL08
+    name: inspect_last_candle_vs_midpoint
+    instruction: "No exemplo de alta, registrar a posição do último candle em relação ao nível de 50% do Canal de Referência."
+    status: "source-derived"
+  - id: VCL09
+    name: conditional_long_example
+    instruction: "No exemplo de alta, esperar retorno do preço e rompimento dos 50% do Canal de Referência antes de descrever a condição de compra."
+    status: "source-derived-example-only"
+  - id: VCL10
+    name: separate_visual_candidate_from_confirmation
+    instruction: "Não tratar candidato visual como canal oficial nem hipótese de entrada como confirmação operacional."
+    status: "project-policy"
+  - id: VCL11
+    name: no_fake_precision
+    instruction: "Se a escala do print não permitir preços exatos, declarar níveis como estimativas visuais."
+    status: "project-policy"
+  - id: VCL12
+    name: cite_evidence_and_alternatives
+    instruction: "Descrever os candles/regiões que sustentam A e B, a escolha corpo/sombra e alternativas plausíveis."
+    status: "source-derived-plus-project-policy"
+
+outputs_required:
+  - trend_assessment
+  - point_a_visual_evidence
+  - point_b_visual_evidence
+  - boundary_method
+  - channel_width_assessment
+  - reference_channel_candidate
+  - neutral_zone_from_engine
+  - midpoint_50_from_engine
+  - breakout_condition
+  - entry_status
+  - stop_reference_and_status
+  - projections_with_confirmation_status
+  - uncertainty_and_alternatives

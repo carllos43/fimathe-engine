@@ -2,10 +2,12 @@
 
 Documento prático derivado do repositório (`docs/visual_channel_localization.md`,
 `rules/visual_channel_localization.yaml`, `docs/fimathe_rules.md`, geometria do motor)
-e das decisões operacionais validadas na aplicação dos prints EURUSD.
+e das decisões operacionais validadas na aplicação dos prints (exemplos em EURUSD, regras válidas para **qualquer ativo**).
 
 Status: **operacional / em uso**. Onde houver conflito com regra ainda provisional do motor,
 este documento deixa a pendência explícita.
+
+**Escopo:** estas regras operacionais valem para **todos os ativos** (Forex, índices, ações, cripto, commodities) e timeframes. O exemplo em EURUSD é apenas ilustrativo.
 
 ---
 
@@ -28,8 +30,8 @@ Referências: `docs/visual_channel_localization.md`, regras VCL01–VCL12.
 
 | Regra | Valor |
 |-------|-------|
-| **Canal + Zona Neutra** | **≤ 0,00350** (35 pips no EURUSD) |
-| Amplitude máxima do canal | **≤ 0,00175** (17,5 pips), porque a ZN copia a amplitude |
+| **Canal + Zona Neutra** | **≤ 0,00350** em preço (ex.: 35 pips no EURUSD; em outros ativos usar a mesma distância em preço) |
+| Amplitude máxima do canal | **≤ 0,00175** em preço, porque a ZN copia a amplitude |
 
 Se o pacote canal + ZN estourar 0,00350:
 
@@ -37,8 +39,10 @@ Se o pacote canal + ZN estourar 0,00350:
 - o setup tende a perder o movimento da janela analisada;
 - deve-se **apertar** o canal usando a região atual e, se preciso, marcação por **corpo**.
 
-Esta regra de teto é **operacional** (definida na aplicação prática). O material de origem
-alerta qualitativamente contra canal largo/estreito, sem fixar o número 0,00350.
+Esta regra de teto é **operacional** e vale para **todos os ativos** (FX, índices, cripto, etc.).
+O número 0,00350 é distância em **preço**, não um conceito exclusivo do EURUSD.
+Em pares com outra cotação, manter a mesma lógica de teto; o equivalente em pips/points muda por símbolo.
+O material de origem alerta qualitativamente contra canal largo/estreito, sem fixar o número 0,00350.
 
 ---
 
@@ -96,9 +100,10 @@ Se 4 ou 5 falharem: apertar A/B na região atual (preferir corpos se a sombra de
 
 ---
 
-## 6. Exemplo consolidado (EURUSD M15 — sessão de referência)
+## 6. Exemplo consolidado (EURUSD M15 — apenas ilustração)
 
-Valores usados após confirmação do suporte e aplicação do teto 0,00350:
+As regras das seções 1–5 e 7–9 valem para **qualquer ativo e timeframe**.
+O exemplo abaixo é só uma aplicação numérica em EURUSD após confirmação do suporte e do teto 0,00350:
 
 | Nível | Preço | Motivo |
 |-------|-------|--------|
@@ -156,4 +161,4 @@ Valores usados após confirmação do suporte e aplicação do teto 0,00350:
 
 ---
 
-*Última consolidação: regras de localização + teto operacional canal+ZN ≤ 0,00350 + exemplo EURUSD 1.11400.*
+*Última consolidação: regras universais (qualquer ativo) + teto operacional canal+ZN ≤ 0,00350 em preço + exemplo ilustrativo EURUSD 1.11400.*

@@ -13,3 +13,10 @@ Em resumo:
   pedido explícito do usuário.
 - Diferencie observações visuais, estimativas, regras confirmadas e hipóteses.
 - Não invente precisão de OHLC nem afirme que uma operação foi confirmada se o print não permitir.
+
+## Price Action + relatório
+
+Ao analisar prints, use também `docs/PRICE_ACTION_ENGINE.md` e `engine/price_action/`.
+Responda no formato de **7 blocos** definido em `docs/PRICE_ACTION_ENGINE.md` (seção 8) e
+em `docs/REGRAS_OPERACIONAIS.md` para canal Fimathe (teto canal+ZN ≤ 0,00350 em preço).
+Decisão final: COMPRA / VENDA / **AGUARDAR**. Sem confirmação → AGUARDAR.

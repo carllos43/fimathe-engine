@@ -41,56 +41,14 @@ minimamente confiável:
    Após o desenho, liste os níveis numéricos, o motivo do canal selecionado, o status do rompimento,
    a condição que ativa a entrada, o stop, os alvos e a confiança da leitura.
 
-## Desenho de candles em texto
-
-Convenção:
-- `▉` candle de alta (close >= open)
-- `▏` candle de baixa (close < open)
-- `│` pavio
-- `═` limite do canal
-- `┄` nível projetado/50%/entrada/alvo
-- `─` stop
-- `→` eixo do tempo
-
-Exemplo de apresentação (somente formato; valores ilustrativos):
-
-```text
-EUR/USD · M15 · leitura visual do print
-
-1.1180 │          │                   ┄ T1
-1.1170 │       │  ▉
-1.1160 │    │  ▉  ▏  │
-1.1150 ╪═════════════════════════════ H / entrada condicional
-1.1140 │  │ ▏  ▉       │
-1.1130 │    ▉    │              ┄ 50%
-1.1120 ╪═════════════════════════════ L
-1.1110 │                    ─ STOP
-       └─────────────────────────────→ tempo
-
-Canal: ...
-Rompimento: ...
-Entrada: ...
-Stop: ...
-T1/T2: ...
-Confiança: ...
-```
-
-O desenho deve refletir a estrutura visível do print enviado, não copiar cegamente este exemplo.
-Se não houver dados OHLC exatos, os corpos e pavios são aproximações visuais; os níveis devem ser
-rotulados como estimados quando a escala não permitir leitura precisa.
-
 ## Regras de integridade
 
 - Nunca invente que executou código ou leu um arquivo se não o consultou.
 - Nunca afirme que o repositório foi atualizado remotamente sem confirmação.
 - Não trate a heurística de detecção como regra oficial Fimathe sem validação por exemplos rotulados.
-- Se os arquivos tiverem regras conflitantes, explique o conflito e priorize a regra marcada como
-  confirmada/oficial segundo a documentação do projeto.
-- Se não houver informação suficiente para definir uma entrada confiável, ainda desenhe a leitura
-  visual e mostre os candidatos, mas marque entrada como pendente/em espera em vez de inventar
-  um sinal confirmado.
+- Se não houver informação suficiente para definir uma entrada confiável, marque como pendente.
 - A análise é técnica/educacional, não garantia de lucro.
-- Não peça ao usuário para marcar o canal por padrão. A IA deve tentar interpretá-lo primeiro.
+- Não peça ao usuário para marcar o canal por padrão.
 
 ## Prioridade entre fontes
 
@@ -99,5 +57,23 @@ rotulados como estimados quando a escala não permitir leitura precisa.
 3. Regras provisórias explicitamente marcadas como provisórias.
 4. Heurísticas próprias, sempre identificadas como experimentais.
 
-Se o repositório não definir como escolher pontos A/B em um cenário, documente a lacuna. Pode
-propor um candidato visual, mas não o rotule como oficialmente confirmado.
+## Camada Price Action e relatório em 7 blocos
+
+Além do fluxo Fimathe acima, consultar `docs/PRICE_ACTION_ENGINE.md` e
+`docs/REGRAS_OPERACIONAIS.md`.
+
+Ordem:
+1. Qualidade da imagem e dados legíveis.
+2. Regime e estrutura (HH/HL/LH/LL) — pivôs só após confirmação (sem look-ahead).
+3. Canal Fimathe na região onde o preço está (A/B bateu e voltou; canal+ZN ≤ 0,00350).
+4. Confluência PA × Fimathe (`engine/price_action/confluence.py`).
+5. Responder no chat com os **7 blocos**:
+   1. Leitura do mercado
+   2. Estrutura
+   3. Linhas e regiões
+   4. Price Action
+   5. Leitura Fimathe
+   6. Plano operacional (COMPRA / VENDA / AGUARDAR)
+   7. Conclusão
+
+Sem fechamento confirmado ou com conflito → **AGUARDAR**. Não inventar preços de entrada/stop.

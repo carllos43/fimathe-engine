@@ -119,3 +119,23 @@ def context_between_timeframes(higher_map, lower_candles, lower_channels=None):
         "incomplete_data": incomplete,
         "warning": "Nunca use candles futuros nem trate candles abertos como fechados em simulacoes historicas",
     }
+
+
+def align_timeframes(higher_bias: str, middle_bias: str, lower_trigger: str) -> Dict[str, Any]:
+    """Explicitly separate HTF bias, middle structure and LTF trigger.
+
+    Inputs are labels from independently analyzed timeframes, not inferred here.
+    This function never creates a trade entry; conflicting or missing context => WAIT.
+    """
+    norm=lambda x: str(x or 'unknown').strip().lower()
+    h,m,l=map(norm,(higher_bias,middle_bias,lower_trigger))
+    bullish={'up','bullish','uptrend','buy','long'}; bearish={'down','bearish','downtrend','sell','short'}
+    hb='UP' if h in bullish else 'DOWN' if h in bearish else 'UNKNOWN'
+    mb='UP' if m in bullish else 'DOWN' if m in bearish else 'UNKNOWN'
+    lt='UP' if l in bullish else 'DOWN' if l in bearish else 'NONE'
+    aligned=hb!='UNKNOWN' and mb==hb and lt==hb
+    conflict=(hb!='UNKNOWN' and mb!='UNKNOWN' and hb!=mb) or (lt!='NONE' and hb!='UNKNOWN' and lt!=hb)
+    return {'higher_timeframe_bias':hb,'middle_timeframe_structure':mb,'lower_timeframe_trigger':lt,
+      'status':'ALIGNED' if aligned else 'CONFLICTING' if conflict else 'INCOMPLETE',
+      'decision':'WAIT','entry_confirmed':False,
+      'notes':['This is a context alignment check, not an entry signal.','Each timeframe must be analyzed independently using closed candles.']}

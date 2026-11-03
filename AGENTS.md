@@ -8,15 +8,21 @@ Em resumo:
 - Identifique swings/pontos A-B e selecione o canal conforme regras documentadas.
 - Verifique rompimento pelo fechamento quando a regra assim exigir.
 - Calcule entrada, stop, zona neutra, 50% e takes somente conforme as regras/variantes.
-- Desenhe os candles diretamente na resposta usando ASCII/Unicode, visualmente semelhante ao
-  print, com pavios, corpos, escala de preço e linhas de níveis. Não gere imagem separada, salvo
-  pedido explícito do usuário.
+- Desenhe os candles diretamente na resposta usando ASCII/Unicode.
 - Diferencie observações visuais, estimativas, regras confirmadas e hipóteses.
-- Não invente precisão de OHLC nem afirme que uma operação foi confirmada se o print não permitir.
+- Não invente precisão de OHLC nem afirme operação confirmada sem base no print.
 
 ## Price Action + relatório
 
-Ao analisar prints, use também `docs/PRICE_ACTION_ENGINE.md` e `engine/price_action/`.
-Responda no formato de **7 blocos** definido em `docs/PRICE_ACTION_ENGINE.md` (seção 8) e
-em `docs/REGRAS_OPERACIONAIS.md` para canal Fimathe (teto canal+ZN ≤ 0,00350 em preço).
-Decisão final: COMPRA / VENDA / **AGUARDAR**. Sem confirmação → AGUARDAR.
+Use `docs/PRICE_ACTION_ENGINE.md` e `engine/price_action/`.
+Responda no formato de **7 blocos**. Decisão: COMPRA / VENDA / **AGUARDAR**.
+
+## Continuidade de sessão (obrigatório)
+
+Antes de analisar qualquer print:
+1. Ler `docs/SESSION_WORKFLOW.md`.
+2. Ler `docs/sessions/<ATIVO>/CURRENT.md` se existir.
+3. **Continuar** o canal/bias/plano gravado — não redesenhar do zero.
+4. Atualizar `CURRENT.md` + `log.md` após a checagem.
+5. Análise semanal (domingo/segunda) em `analysis/weekly/`.
+6. Só reanalisar por completo se status `INVALIDADO` ou nova semana.

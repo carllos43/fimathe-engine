@@ -1,5 +1,14 @@
 # EURUSD — log de sessão
 
+## 2026-11-03 — checagem M15 (~04:05) print continuação
+
+- Preço: **1.11920**
+- Continuando sessão EM_OPERACAO (venda)
+- Canal operacional intacto: H=1.12000 L=1.11825 stop=1.12175
+- Preço **dentro** do canal, ~50%
+- Marcas do usuário: 1.12195 / 1.12019 / 1.11825 (alinhadas ao mapa)
+- Decisão: manter plano; sem novo gatilho; não redesenhar canal
+
 ## 2026-11-03 — checagem M15 (~03:48)
 
 - Preço: 1.11870

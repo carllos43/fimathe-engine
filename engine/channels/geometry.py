@@ -40,7 +40,11 @@ def build_neutral_zone(
     reference: ReferenceChannel,
     direction_of_reference: TrendDirection = TrendDirection.DOWN,
 ) -> CalculationResult:
-    """Zona neutra adjacente com a mesma amplitude."""
+    """Zona neutra adjacente com a mesma amplitude.
+
+    Compra (UP): ZN abaixo do L (L-amplitude até L).
+    Venda (DOWN): ZN acima do H (H até H+amplitude).
+    """
     amp = reference.amplitude
     if direction_of_reference == TrendDirection.DOWN:
         n_lower = reference.upper
@@ -49,13 +53,13 @@ def build_neutral_zone(
     elif direction_of_reference == TrendDirection.UP:
         n_lower = reference.lower - amp
         n_upper = reference.lower
-        formula = "PROVISIONAL symmetric: neutral_upper = L; neutral_lower = L - amplitude"
+        formula = "neutral_upper = L; neutral_lower = L - amplitude (compra: ZN abaixo do canal)"
     else:
         return CalculationResult(
             value=None,
             parameters={"reference": (reference.lower, reference.upper)},
             rule_id="B_neutral_zone",
-            rule_version="0.2",
+            rule_version="0.3",
             clarity=RuleClarity.PROVISIONAL,
             warnings=["direction must be UP or DOWN to build neutral zone"],
         )
@@ -66,12 +70,6 @@ def build_neutral_zone(
         reference=reference,
         direction_of_reference=direction_of_reference,
     )
-    warnings = []
-    if direction_of_reference == TrendDirection.UP:
-        warnings.append(
-            "Construção da zona neutra para tendência de alta é provisional"
-        )
-
     return CalculationResult(
         value=neutral,
         parameters={
@@ -82,10 +80,13 @@ def build_neutral_zone(
             "formula": formula,
         },
         rule_id="B_neutral_zone",
-        rule_version="0.2",
-        clarity=RuleClarity.MEDIUM if direction_of_reference == TrendDirection.DOWN else RuleClarity.PROVISIONAL,
-        warnings=warnings,
-        notes="Stop tipicamente além do limite externo da zona neutra",
+        rule_version="0.3",
+        clarity=RuleClarity.HIGH,
+        warnings=[],
+        notes=(
+            "ZN compra: abaixo do L. ZN venda: acima do H. "
+            "Stop tipicamente além do limite externo da zona neutra."
+        ),
     )
 
 
